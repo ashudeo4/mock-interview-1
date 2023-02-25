@@ -26,10 +26,12 @@
 <body>
   <div class="container">
     <h1>Replace all instance of my name</h1>
-    <input name="myName" type="text" placeholder="Enter your name" />
-    <textarea name="description" id="description" cols="30" rows="10"></textarea>
-    <button>Process</button>
-    <pre>Result</pre>
+    <input id="myName" name="myName" type="text" placeholder="Enter your name" />
+    <input id="myValue" name="myValue" type="text" placeholder="Enter your value" />
+
+    <textarea id="content" name="description" id="description" cols="30" rows="10"></textarea>
+    <button id="button">Process</button>
+    <pre id="output">Result</pre>
 
     <span>Instruction:</span>
     <ul>
@@ -57,6 +59,24 @@
       </li>
     </ul>
   </div>
+  <script>
+    const myName = document.getElementById("myName")
+    const myValue = document.getElementById("myValue")
+    const content = document.getElementById("content")
+    const output = document.getElementById("output")
+
+    document.getElementById("button").addEventListener("click",()=>{
+          output.innerHTML = content.replaceName(myName.value,myValue.name)
+
+    });
+    String.prototype.replaceName(function replaceName(key,value) {
+      
+      const name = new RegExp(key,"ig")
+      content.value.replace(name,value)
+    })
+    
+
+  </script>
 </body>
 
 </html>
