@@ -29,7 +29,6 @@
 
       worker = new Worker("webWorker.js");
       worker.onmessage = function(event){
-        console.log(event);
         statusContainer.innerHTML = event.data;
       }
       worker.postMessage(1)
