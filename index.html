@@ -60,20 +60,23 @@
     </ul>
   </div>
   <script>
+    HTMLElement.prototype.replaceName = (content,key,value)=> {
+      const name = new RegExp(key,"ig")
+      return content.value.replace(name,value)
+      
+    }
     const myName = document.getElementById("myName")
     const myValue = document.getElementById("myValue")
     const content = document.getElementById("content")
     const output = document.getElementById("output")
 
     document.getElementById("button").addEventListener("click",()=>{
-          output.innerHTML = content.replaceName(myName.value,myValue.name)
+     
+      // console.log(content.replaceName(content,myName.value,myValue.name));
+          output.innerHTML = content.replaceName(content,myName.value,myValue.value)
 
     });
-    String.prototype.replaceName(function replaceName(key,value) {
-      
-      const name = new RegExp(key,"ig")
-      content.value.replace(name,value)
-    })
+    
     
 
   </script>
