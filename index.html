@@ -23,14 +23,16 @@
     let sta = "ready";
     let resultContainer = document.getElementById("result");
     let statusContainer = document.getElementById("status");
-    function calculate() {
-      statusContainer.innerHTML = "calculating"
 
-      for (i = 0; i < 10; i++) {
-        for (j = 0; j < 100000; j++) {
-          statusContainer.innerHTML = "ready"
-        }
+    function calculate(){
+      statusContainer.innerHTML = "calculating";
+
+      worker = new Worker("webWorker.js");
+      worker.onmessage = function(event){
+        console.log(event);
+        statusContainer.innerHTML = event.data;
       }
+      worker.postMessage(1)
     }
 
     function add() {
